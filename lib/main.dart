@@ -1,7 +1,8 @@
-import 'package:e_shop/ProfileScreen.dart';
+import 'package:e_shop/screens/history_screen/HistoryScreen.dart';
+import 'package:e_shop/screens/profile_screen/ProfileScreen.dart';
 import 'package:flutter/material.dart';
-import 'HomeScreen.dart';
-import 'CartScreen.dart';
+import 'screens/home_screen/HomeScreen.dart';
+import 'screens/cart_screen/CartScreen.dart';
 
 void main() {
   runApp(const EShop());
@@ -31,6 +32,7 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
 
   static const List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
+    HistoryScreen(),
     CartScreen(),
     ProfileScreen(),
   ];
@@ -47,7 +49,7 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
         bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
             elevation: 0,
-            items: const [
+            items: [
               BottomNavigationBarItem(
                 activeIcon: Icon(
                   Icons.home,
@@ -56,6 +58,12 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
                 label: "Home",
               ),
               BottomNavigationBarItem(
+                  icon: Icon(Icons.history_outlined),
+                  activeIcon: Icon(
+                    Icons.history,
+                  ),
+                  label: "History"),
+              BottomNavigationBarItem(
                 activeIcon: Icon(Icons.add_shopping_cart),
                 icon: Icon(Icons.add_shopping_cart_outlined),
                 label: "Cart",
@@ -63,7 +71,7 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
               BottomNavigationBarItem(
                 activeIcon: Icon(Icons.account_circle),
                 icon: Icon(Icons.account_circle_outlined),
-                label: "Chat",
+                label: "Account",
               ),
             ],
             currentIndex: _selectedIndex,
