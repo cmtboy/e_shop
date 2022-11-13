@@ -13,7 +13,12 @@ class EShop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      theme: ThemeData.light().copyWith(
+          bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        elevation: 5,
+        backgroundColor: Colors.white,
+      )),
       debugShowCheckedModeBanner: false,
       home: MyBottomNavBar(),
     );
@@ -48,8 +53,8 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
         ),
         bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
-            elevation: 0,
-            items: [
+            elevation: 1,
+            items: const [
               BottomNavigationBarItem(
                 activeIcon: Icon(
                   Icons.home,
