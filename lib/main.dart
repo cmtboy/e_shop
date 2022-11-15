@@ -1,6 +1,9 @@
+import 'package:e_shop/providers/product_provider.dart';
 import 'package:e_shop/screens/history_screen/HistoryScreen.dart';
+import 'package:e_shop/screens/product_details/product_details_screen.dart';
 import 'package:e_shop/screens/profile_screen/ProfileScreen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'screens/home_screen/HomeScreen.dart';
 import 'screens/cart_screen/CartScreen.dart';
 
@@ -13,14 +16,20 @@ class EShop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData.light().copyWith(
-          bottomNavigationBarTheme: BottomNavigationBarThemeData(
-        elevation: 5,
-        backgroundColor: Colors.white,
-      )),
-      debugShowCheckedModeBanner: false,
-      home: MyBottomNavBar(),
+    return ChangeNotifierProvider(
+      create: (context) => ProductProvider(),
+      child: MaterialApp(
+        theme: ThemeData.light().copyWith(
+            bottomNavigationBarTheme: BottomNavigationBarThemeData(
+          elevation: 5,
+          backgroundColor: Colors.white,
+        )),
+        debugShowCheckedModeBanner: false,
+        routes: {
+          'ProductDetails': (context) => ProductDetails(),
+        },
+        home: const MyBottomNavBar(),
+      ),
     );
   }
 }
@@ -35,7 +44,7 @@ class MyBottomNavBar extends StatefulWidget {
 class _MyBottomNavBarState extends State<MyBottomNavBar> {
   int _selectedIndex = 0;
 
-  static const List<Widget> _widgetOptions = <Widget>[
+  static List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
     HistoryScreen(),
     CartScreen(),
@@ -69,8 +78,8 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
                   ),
                   label: "History"),
               BottomNavigationBarItem(
-                activeIcon: Icon(Icons.add_shopping_cart),
-                icon: Icon(Icons.add_shopping_cart_outlined),
+                activeIcon: Icon(Icons.shopping_cart),
+                icon: Icon(Icons.shopping_cart_outlined),
                 label: "Cart",
               ),
               BottomNavigationBarItem(
