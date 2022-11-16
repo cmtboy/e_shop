@@ -15,18 +15,16 @@ class HomeScreen extends StatelessWidget {
           title: const Text("Home"),
           centerTitle: true,
         ),
-        body: GestureDetector(
-          onTap: () => Navigator.pushNamed(context, 'ProductDetails'),
-          child: GridView.builder(
-              itemCount: products.length,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                childAspectRatio: 2 / 2.7,
-                crossAxisCount: 2,
-              ),
-              itemBuilder: (context, index) => HomeProduct(
-                  productImage: products[index].imgUrl,
-                  productName: products[index].name,
-                  productPrice: products[index].price)),
-        ));
+        body: GridView.builder(
+            itemCount: products.length,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              childAspectRatio: 2 / 2.7,
+              crossAxisCount: 2,
+            ),
+            itemBuilder: (context, index) => HomeProduct(
+                id: products[index].id,
+                productImage: products[index].imgUrl,
+                productName: products[index].name,
+                productPrice: products[index].price)));
   }
 }

@@ -16,33 +16,13 @@ class ProductProvider with ChangeNotifier {
         productDetails: 'My new laptop, wow',
         imgUrl: 'assets/images/product.png',
         price: 8768.3),
-    Product(
-        id: '1',
-        name: 'Walton Primo HM4',
-        productDetails: 'Very good phone ',
-        imgUrl: 'assets/images/product.png',
-        price: 23.5),
-    Product(
-        id: '1',
-        name: 'Walton Primo HM4',
-        productDetails: 'Very good phone ',
-        imgUrl: 'assets/images/product.png',
-        price: 23.5),
-    Product(
-        id: '1',
-        name: 'Walton Primo HM4',
-        productDetails: 'Very good phone ',
-        imgUrl: 'assets/images/product.png',
-        price: 23.5),
-    Product(
-        id: '1',
-        name: 'Walton Primo HM4',
-        productDetails: 'Very good phone ',
-        imgUrl: 'assets/images/product.png',
-        price: 23.5),
   ];
 
-  getProducts() {
+  List<Product> getProducts() {
     return [...loadedProduct];
+  }
+
+  Product getProductDetailsByID(String id) {
+    return loadedProduct.firstWhere((element) => element.id == id);
   }
 }
