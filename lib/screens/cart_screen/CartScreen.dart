@@ -7,7 +7,7 @@ class CartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Cart"),
+        title: const Text("Your Cart"),
         centerTitle: true,
       ),
       body: const Center(child: Text("Cart Screen")),

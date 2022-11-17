@@ -1,5 +1,6 @@
 import 'package:e_shop/providers/product_provider.dart';
 import 'package:e_shop/screens/home_screen/product_widget.dart';
+import 'package:e_shop/widgets/cart_icon_button.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -14,6 +15,12 @@ class HomeScreen extends StatelessWidget {
         appBar: AppBar(
           title: const Text("Home"),
           centerTitle: true,
+          //ToDo:pass icon data
+          actions: [
+            CartIconButton(
+              totalAddedItem: '3',
+            )
+          ],
         ),
         body: GridView.builder(
             itemCount: products.length,

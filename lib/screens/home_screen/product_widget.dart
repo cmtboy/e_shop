@@ -38,15 +38,19 @@ class HomeProduct extends StatelessWidget {
               ),
               Padding(
                   padding: const EdgeInsets.only(top: 8, bottom: 7),
-                  child: Text(productName,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                          fontSize: MediaQuery.of(context).size.width * 0.04))),
-              Text(
-                "\$ $productPrice",
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: MediaQuery.of(context).size.width * 0.05),
+                  child: FittedBox(
+                    child: Text(productName,
+                        style: TextStyle(
+                            fontSize:
+                                MediaQuery.of(context).size.width * 0.04)),
+                  )),
+              FittedBox(
+                child: Text(
+                  "\$ $productPrice",
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: MediaQuery.of(context).size.width * 0.05),
+                ),
               )
             ]),
       ),
