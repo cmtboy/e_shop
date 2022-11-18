@@ -2,6 +2,7 @@ import 'package:e_shop/widgets/cart_icon_button.dart';
 import 'package:flutter/material.dart';
 import 'package:e_shop/providers/product_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:e_shop/providers/cart_provider.dart';
 
 class ProductDetails extends StatelessWidget {
   const ProductDetails({Key? key}) : super(key: key);
@@ -11,6 +12,7 @@ class ProductDetails extends StatelessWidget {
     var productId = ModalRoute.of(context)!.settings.arguments as String;
     var productDetails = Provider.of<ProductProvider>(context, listen: false)
         .getProductDetailsByID(productId);
+    var cartInfo = Provider.of<CartProvider>(context);
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -18,7 +20,7 @@ class ProductDetails extends StatelessWidget {
         ),
         actions: [
           CartIconButton(
-            totalAddedItem: '3',
+            totalAddedItem: cartInfo.itemCount.toString(),
           )
         ],
       ),
@@ -49,6 +51,12 @@ class ProductDetails extends StatelessWidget {
             ],
           ),
         ),
+        ElevatedButton(
+            onPressed: () {
+              cartInfo.addItem(
+                  productDetails.id, productDetails.price, productDetails.name);
+            },
+            child: Text('Add To Cart'))
       ]),
     );
   }

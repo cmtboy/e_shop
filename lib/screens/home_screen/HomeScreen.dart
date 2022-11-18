@@ -3,6 +3,7 @@ import 'package:e_shop/screens/home_screen/product_widget.dart';
 import 'package:e_shop/widgets/cart_icon_button.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:e_shop/providers/cart_provider.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -10,6 +11,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var products = Provider.of<ProductProvider>(context).getProducts();
+    var cartInfo = Provider.of<CartProvider>(context);
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
@@ -18,7 +20,7 @@ class HomeScreen extends StatelessWidget {
           //ToDo:pass icon data
           actions: [
             CartIconButton(
-              totalAddedItem: '3',
+              totalAddedItem: cartInfo.itemCount.toString(),
             )
           ],
         ),

@@ -1,3 +1,4 @@
+import 'package:e_shop/providers/cart_provider.dart';
 import 'package:e_shop/providers/product_provider.dart';
 import 'package:e_shop/screens/history_screen/HistoryScreen.dart';
 import 'package:e_shop/screens/product_details/product_details_screen.dart';
@@ -16,8 +17,15 @@ class EShop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => ProductProvider(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => ProductProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: ((context) => CartProvider()),
+        )
+      ],
       child: MaterialApp(
         theme: ThemeData.light().copyWith(
             bottomNavigationBarTheme: BottomNavigationBarThemeData(
