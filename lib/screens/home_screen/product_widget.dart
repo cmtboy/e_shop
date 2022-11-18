@@ -42,7 +42,7 @@ class HomeProduct extends StatelessWidget {
                     child: Text(productName,
                         style: TextStyle(
                             fontSize:
-                                MediaQuery.of(context).size.width * 0.04)),
+                                MediaQuery.of(context).size.width * 0.045)),
                   )),
               FittedBox(
                 child: Text(

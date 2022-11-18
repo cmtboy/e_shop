@@ -23,6 +23,11 @@ class CartProvider with ChangeNotifier {
     return _items.length;
   }
 
+  void deleteItem(itemid) {
+    _items.remove(itemid);
+    notifyListeners();
+  }
+
   double get totalAmount {
     double total = 0.0;
     _items.forEach((key, value) {

@@ -17,7 +17,6 @@ class HomeScreen extends StatelessWidget {
         appBar: AppBar(
           title: const Text("Home"),
           centerTitle: true,
-          //ToDo:pass icon data
           actions: [
             CartIconButton(
               totalAddedItem: cartInfo.itemCount.toString(),
