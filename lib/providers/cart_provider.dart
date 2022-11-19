@@ -15,6 +15,11 @@ class Cart {
 class CartProvider with ChangeNotifier {
   Map<String, Cart> _items = {};
 
+  void clear() {
+    _items = {};
+    notifyListeners();
+  }
+
   Map<String, Cart> get cartItems {
     return {..._items};
   }

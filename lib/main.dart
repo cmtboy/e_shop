@@ -1,6 +1,7 @@
 import 'package:e_shop/providers/cart_provider.dart';
+import 'package:e_shop/providers/orders_provider.dart';
 import 'package:e_shop/providers/product_provider.dart';
-import 'package:e_shop/screens/history_screen/HistoryScreen.dart';
+import 'package:e_shop/screens/order_screen/OrderScreen.dart';
 import 'package:e_shop/screens/product_details/product_details_screen.dart';
 import 'package:e_shop/screens/profile_screen/ProfileScreen.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +25,8 @@ class EShop extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: ((context) => CartProvider()),
-        )
+        ),
+        ChangeNotifierProvider(create: (context) => OrderProvider())
       ],
       child: MaterialApp(
         theme: ThemeData.light().copyWith(
@@ -55,8 +57,8 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
 
   static List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
-    HistoryScreen(),
     CartScreen(),
+    OrderScreen(),
     ProfileScreen(),
   ];
 
@@ -81,16 +83,16 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
                 label: "Home",
               ),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.history_outlined),
-                  activeIcon: Icon(
-                    Icons.history,
-                  ),
-                  label: "History"),
-              BottomNavigationBarItem(
                 activeIcon: Icon(Icons.shopping_cart),
                 icon: Icon(Icons.shopping_cart_outlined),
                 label: "Cart",
               ),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.local_shipping_outlined),
+                  activeIcon: Icon(
+                    Icons.local_shipping,
+                  ),
+                  label: "Orders"),
               BottomNavigationBarItem(
                 activeIcon: Icon(Icons.account_circle),
                 icon: Icon(Icons.account_circle_outlined),
