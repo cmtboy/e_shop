@@ -37,7 +37,8 @@ class EShop extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         routes: {
           'ProductDetails': (context) => ProductDetails(),
-          'cartScreen': (context) => CartScreen()
+          'cartScreen': (context) => CartScreen(),
+          'OrderScreen': (context) => OrderScreen(),
         },
         home: const MyBottomNavBar(),
       ),

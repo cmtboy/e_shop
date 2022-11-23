@@ -38,6 +38,14 @@ class CartScreen extends StatelessWidget {
                                 .addOrder(cart.cartItems.values.toList(),
                                     cart.totalAmount);
                             cart.clear();
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text('Order placed!'),
+                              action: SnackBarAction(
+                                  label: 'View',
+                                  onPressed: () {
+                                    Navigator.pushNamed(context, 'OrderScreen');
+                                  }),
+                            ));
                           },
                           child: Text('Order Now'))
                     ]),

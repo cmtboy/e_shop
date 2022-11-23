@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:e_shop/providers/cart_provider.dart';
 
 class ProductDetails extends StatelessWidget {
-  const ProductDetails({Key? key}) : super(key: key);
+  ProductDetails({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,6 +13,14 @@ class ProductDetails extends StatelessWidget {
     var productDetails = Provider.of<ProductProvider>(context, listen: false)
         .getProductDetailsByID(productId);
     var cartInfo = Provider.of<CartProvider>(context);
+    final snackBar = SnackBar(
+      content: Text('Item added to cart!'),
+      action: SnackBarAction(
+          label: 'View',
+          onPressed: () {
+            Navigator.pushNamed(context, 'cartScreen');
+          }),
+    );
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -55,6 +63,8 @@ class ProductDetails extends StatelessWidget {
             onPressed: () {
               cartInfo.addItem(
                   productDetails.id, productDetails.price, productDetails.name);
+              ScaffoldMessenger.of(context).hideCurrentSnackBar();
+              ScaffoldMessenger.of(context).showSnackBar(snackBar);
             },
             child: Text('Add To Cart'))
       ]),
