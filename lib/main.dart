@@ -1,6 +1,8 @@
 import 'package:e_shop/providers/cart_provider.dart';
 import 'package:e_shop/providers/orders_provider.dart';
 import 'package:e_shop/providers/product_provider.dart';
+import 'package:e_shop/screens/edit_product_screen/edit_Product_screen.dart';
+import 'package:e_shop/screens/manage_products/manage_screen.dart';
 import 'package:e_shop/screens/order_screen/OrderScreen.dart';
 import 'package:e_shop/screens/product_details/product_details_screen.dart';
 import 'package:e_shop/screens/profile_screen/ProfileScreen.dart';
@@ -39,6 +41,8 @@ class EShop extends StatelessWidget {
           'ProductDetails': (context) => ProductDetails(),
           'cartScreen': (context) => CartScreen(),
           'OrderScreen': (context) => OrderScreen(),
+          'ManageScreen': (context) => ManageScreen(),
+          'EditProductScreen': (context) => EditProductScreen(),
         },
         home: const MyBottomNavBar(),
       ),
