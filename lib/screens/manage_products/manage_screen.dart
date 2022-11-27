@@ -27,6 +27,7 @@ class ManageScreen extends StatelessWidget {
           itemCount: productDetails.loadedProduct.length,
           itemBuilder: (BuildContext context, int index) {
             return ManageProductWidget(
+                id: productDetails.loadedProduct[index].id,
                 imageUrl: productDetails.loadedProduct[index].imgUrl,
                 productName: productDetails.loadedProduct[index].name);
           },
