@@ -18,17 +18,17 @@ class CartScreen extends StatelessWidget {
         body: Column(
           children: [
             Card(
-              margin: EdgeInsets.all(15),
+              margin: const EdgeInsets.all(15),
               child: Padding(
-                padding: EdgeInsets.all(8),
+                padding: const EdgeInsets.all(8),
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
+                      const Text(
                         'Total',
                         style: TextStyle(fontSize: 20),
                       ),
-                      Spacer(),
+                      const Spacer(),
                       Chip(
                           label:
                               Text('\$${cart.totalAmount.toStringAsFixed(2)}')),
@@ -39,7 +39,7 @@ class CartScreen extends StatelessWidget {
                                     cart.totalAmount);
                             cart.clear();
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                              content: Text('Order placed!'),
+                              content: const Text('Order placed!'),
                               action: SnackBarAction(
                                   label: 'View',
                                   onPressed: () {
@@ -47,11 +47,11 @@ class CartScreen extends StatelessWidget {
                                   }),
                             ));
                           },
-                          child: Text('Order Now'))
+                          child: const Text('Order Now'))
                     ]),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Expanded(

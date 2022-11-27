@@ -29,11 +29,12 @@ class _OrderScreenCardState extends State<OrderScreenCard> {
                 });
               },
               icon: _isExpanded
-                  ? Icon(Icons.expand_less)
-                  : Icon(Icons.expand_more),
+                  ? const Icon(Icons.expand_less)
+                  : const Icon(Icons.expand_more),
             ),
           ),
           if (_isExpanded)
+            // ignore: sized_box_for_whitespace
             Container(
               height: (widget.items.products.length * 20).toDouble(),
               child: ListView.builder(

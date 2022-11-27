@@ -11,18 +11,18 @@ class ManageScreen extends StatelessWidget {
     var productDetails = Provider.of<ProductProvider>(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('Manage Products'),
+        title: const Text('Manage Products'),
         actions: [
           IconButton(
             onPressed: () {
               Navigator.pushNamed(context, "EditProductScreen");
             },
-            icon: Icon(Icons.add),
+            icon: const Icon(Icons.add),
           ),
         ],
       ),
       body: Padding(
-        padding: EdgeInsets.all(8),
+        padding: const EdgeInsets.all(8),
         child: ListView.builder(
           itemCount: productDetails.loadedProduct.length,
           itemBuilder: (BuildContext context, int index) {

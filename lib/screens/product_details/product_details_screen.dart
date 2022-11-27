@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:e_shop/providers/cart_provider.dart';
 
 class ProductDetails extends StatelessWidget {
-  ProductDetails({Key? key}) : super(key: key);
+  const ProductDetails({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class ProductDetails extends StatelessWidget {
         .getProductDetailsByID(productId);
     var cartInfo = Provider.of<CartProvider>(context);
     final snackBar = SnackBar(
-      content: Text('Item added to cart!'),
+      content: const Text('Item added to cart!'),
       action: SnackBarAction(
           label: 'View',
           onPressed: () {
@@ -34,27 +34,31 @@ class ProductDetails extends StatelessWidget {
       ),
       body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Center(
+          // ignore: sized_box_for_whitespace
           child: Container(
               height: 300,
               width: 300,
               child: Image.asset(productDetails.imgUrl)),
         ),
         Container(
-          padding: EdgeInsets.only(left: 20, top: 20),
+          padding: const EdgeInsets.only(left: 20, top: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 "Price: \$ ${productDetails.price.toString()}",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+                style:
+                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
               ),
               Text(
                 productDetails.name,
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                style:
+                    const TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
               ),
               Text(
                 productDetails.productDetails,
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w300),
+                style:
+                    const TextStyle(fontSize: 20, fontWeight: FontWeight.w300),
               )
             ],
           ),
@@ -66,7 +70,7 @@ class ProductDetails extends StatelessWidget {
               ScaffoldMessenger.of(context).hideCurrentSnackBar();
               ScaffoldMessenger.of(context).showSnackBar(snackBar);
             },
-            child: Text('Add To Cart'))
+            child: const Text('Add To Cart'))
       ]),
     );
   }

@@ -13,8 +13,8 @@ class CartIconButton extends StatelessWidget {
         Navigator.pushNamed(context, 'cartScreen');
       },
       icon: Badge(
-        badgeContent: Text('$totalAddedItem'),
-        child: Icon(Icons.shopping_cart),
+        badgeContent: Text(totalAddedItem),
+        child: const Icon(Icons.shopping_cart),
       ),
     );
   }

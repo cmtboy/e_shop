@@ -39,7 +39,7 @@ class HomeScreen extends StatelessWidget {
           onPressed: () {
             Navigator.pushNamed(context, 'ManageScreen');
           },
-          child: Icon(Icons.settings)),
+          child: const Icon(Icons.settings)),
     );
   }
 }

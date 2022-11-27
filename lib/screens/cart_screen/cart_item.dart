@@ -26,20 +26,20 @@ class CartItem extends StatelessWidget {
         return showDialog(
           context: context,
           builder: (context) => AlertDialog(
-            title: Text('Are you sure?'),
-            content: Text('Do you want to delete this item from cart?'),
+            title: const Text('Are you sure?'),
+            content: const Text('Do you want to delete this item from cart?'),
             actions: [
               TextButton(
                 onPressed: () {
                   Navigator.of(context).pop(true);
                 },
-                child: Text('Yes'),
+                child: const Text('Yes'),
               ),
               TextButton(
                 onPressed: () {
                   Navigator.of(context).pop(false);
                 },
-                child: Text('No'),
+                child: const Text('No'),
               ),
             ],
           ),
@@ -52,9 +52,9 @@ class CartItem extends StatelessWidget {
         color: Colors.red,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
-          children: [
+          children: const [
             Padding(
-              padding: const EdgeInsets.only(right: 18),
+              padding: EdgeInsets.only(right: 18),
               child: Icon(
                 Icons.delete,
                 color: Colors.white,
@@ -66,9 +66,9 @@ class CartItem extends StatelessWidget {
       direction: DismissDirection.endToStart,
       key: ValueKey(productId),
       child: Card(
-        margin: EdgeInsets.symmetric(horizontal: 15, vertical: 4),
+        margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 4),
         child: Padding(
-          padding: EdgeInsets.all(8),
+          padding: const EdgeInsets.all(8),
           child: ListTile(
             leading: CircleAvatar(
               child: FittedBox(

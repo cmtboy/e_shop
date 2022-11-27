@@ -32,17 +32,17 @@ class EShop extends StatelessWidget {
       ],
       child: MaterialApp(
         theme: ThemeData.light().copyWith(
-            bottomNavigationBarTheme: BottomNavigationBarThemeData(
+            bottomNavigationBarTheme: const BottomNavigationBarThemeData(
           elevation: 5,
           backgroundColor: Colors.white,
         )),
         debugShowCheckedModeBanner: false,
         routes: {
-          'ProductDetails': (context) => ProductDetails(),
-          'cartScreen': (context) => CartScreen(),
-          'OrderScreen': (context) => OrderScreen(),
-          'ManageScreen': (context) => ManageScreen(),
-          'EditProductScreen': (context) => EditProductScreen(),
+          'ProductDetails': (context) => const ProductDetails(),
+          'cartScreen': (context) => const CartScreen(),
+          'OrderScreen': (context) => const OrderScreen(),
+          'ManageScreen': (context) => const ManageScreen(),
+          'EditProductScreen': (context) => const EditProductScreen(),
         },
         home: const MyBottomNavBar(),
       ),
@@ -60,11 +60,11 @@ class MyBottomNavBar extends StatefulWidget {
 class _MyBottomNavBarState extends State<MyBottomNavBar> {
   int _selectedIndex = 0;
 
-  static List<Widget> _widgetOptions = <Widget>[
-    HomeScreen(),
-    CartScreen(),
-    OrderScreen(),
-    ProfileScreen(),
+  final List<Widget> _widgetOptions = <Widget>[
+    const HomeScreen(),
+    const CartScreen(),
+    const OrderScreen(),
+    const ProfileScreen(),
   ];
 
   //Implementing Bottom Navigation Bar

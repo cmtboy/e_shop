@@ -23,11 +23,11 @@ class ManageProductWidget extends StatelessWidget {
               onPressed: () {
                 Navigator.pushNamed(context, 'EditProductScreen');
               },
-              icon: Icon(Icons.edit),
+              icon: const Icon(Icons.edit),
             ),
             IconButton(
               onPressed: () {},
-              icon: Icon(Icons.delete),
+              icon: const Icon(Icons.delete),
             )
           ],
         ),

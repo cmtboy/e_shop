@@ -11,7 +11,7 @@ class OrderScreen extends StatelessWidget {
     var order = Provider.of<OrderProvider>(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "Orders",
         ),
         centerTitle: true,
