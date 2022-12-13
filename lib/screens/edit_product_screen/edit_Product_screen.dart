@@ -39,7 +39,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
     super.dispose();
   }
 
-  void _saveForm() {
+  Future<void> _saveForm() async {
     setState(() {
       isloading = true;
     });
@@ -49,30 +49,34 @@ class _EditProductScreenState extends State<EditProductScreen> {
       return;
     }
     _form.currentState?.save();
-    Provider.of<ProductProvider>(context, listen: false)
-        .addProduct(_editedProduct)
-        .catchError((error) {
-      return showDialog(
+    try {
+      await Provider.of<ProductProvider>(context, listen: false)
+          .addProduct(_editedProduct);
+    } catch (error) {
+      showDialog(
           context: context,
           builder: (ctx) => AlertDialog(
-                title: Text("an error occur"),
-                content: Text("something went wrong"),
+                title: const Text("an error occur"),
+                content: const Text("something went wrong"),
                 actions: [
                   TextButton(
                       onPressed: () {
                         Navigator.of(context).pop();
                       },
-                      child: Text("Ok"))
+                      child: const Text("Ok"))
                 ],
               ));
-    }).then(
-      (_) {
-        setState(() {
-          isloading = false;
-        });
-        Navigator.of(context).pop();
-      },
-    );
+    }
+finally{
+  // (_) {
+      setState(() {
+        isloading = false;
+      });
+      Navigator.of(context).pop();
+    // };
+}
+  
+
     // Navigator.of(context).pop();
   }
 
@@ -89,7 +93,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
         title: const Text('Edit Product'),
       ),
       body: isloading
-          ? Center(
+          ? const Center(
               child: CircularProgressIndicator(),
             )
           : Padding(

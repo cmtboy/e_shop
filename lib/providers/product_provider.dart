@@ -47,23 +47,22 @@ class ProductProvider with ChangeNotifier {
     return loadedProduct.firstWhere((element) => element.id == id);
   }
 
-  Future<void> addProduct(Product product) {
+  Future<void> addProduct(Product product) async {
     var url =
         Uri.https('e-shop-74df1-default-rtdb.firebaseio.com', '/products.json');
-    return http
-        .post(
-      url,
-      body: json.encode(
-        {
-          'id': DateTime.now().toString(),
-          'name': product.name,
-          'productDetails': product.productDetails,
-          'price': product.price,
-          'imgUrl': product.imgUrl
-        },
-      ),
-    )
-        .then((response) {
+    try {
+      final response = await http.post(
+        url,
+        body: json.encode(
+          {
+            'id': DateTime.now().toString(),
+            'name': product.name,
+            'productDetails': product.productDetails,
+            'price': product.price,
+            'imgUrl': product.imgUrl
+          },
+        ),
+      );
       var decode_data = json.decode(response.body);
       final newProduct = Product(
           // id: DateTime.now().toString(),
@@ -74,9 +73,9 @@ class ProductProvider with ChangeNotifier {
           imgUrl: product.imgUrl);
       loadedProduct.insert(0, newProduct);
       notifyListeners();
-    }).catchError((error) {
+    } catch (error) {
       throw error;
-    });
+    }
   }
 
   void deleteProduct(id) {
