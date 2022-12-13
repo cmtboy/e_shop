@@ -47,29 +47,36 @@ class ProductProvider with ChangeNotifier {
     return loadedProduct.firstWhere((element) => element.id == id);
   }
 
-  void addProduct(Product product) {
-    var url = Uri.https(
-        'e-shop-74df1-default-rtdb.firebaseio.com', '/products.json');
-    http.post(url,body: json.encode(
-      
-      {
-
-      'id': DateTime.now().toString(),
-      'name': product.name,
-      'productDetails': product.productDetails,
-      'price': product.price,
-      'imgUrl': product.imgUrl
-
-      },),);
-
-    final newProduct = Product(
-        id: DateTime.now().toString(),
-        name: product.name,
-        productDetails: product.productDetails,
-        price: product.price,
-        imgUrl: product.imgUrl);
-    loadedProduct.insert(0, newProduct);
-    notifyListeners();
+  Future<void> addProduct(Product product) {
+    var url =
+        Uri.https('e-shop-74df1-default-rtdb.firebaseio.com', '/products.jsn');
+    return http
+        .post(
+      url,
+      body: json.encode(
+        {
+          'id': DateTime.now().toString(),
+          'name': product.name,
+          'productDetails': product.productDetails,
+          'price': product.price,
+          'imgUrl': product.imgUrl
+        },
+      ),
+    )
+        .then((response) {
+      var decode_data = json.decode(response.body);
+      final newProduct = Product(
+          // id: DateTime.now().toString(),
+          id: decode_data['name'],
+          name: product.name,
+          productDetails: product.productDetails,
+          price: product.price,
+          imgUrl: product.imgUrl);
+      loadedProduct.insert(0, newProduct);
+      notifyListeners();
+    }).catchError((error) {
+      throw error;
+    });
   }
 
   void deleteProduct(id) {
