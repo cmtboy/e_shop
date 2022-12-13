@@ -49,7 +49,7 @@ class ProductProvider with ChangeNotifier {
 
   Future<void> addProduct(Product product) {
     var url =
-        Uri.https('e-shop-74df1-default-rtdb.firebaseio.com', '/products.jsn');
+        Uri.https('e-shop-74df1-default-rtdb.firebaseio.com', '/products.json');
     return http
         .post(
       url,
