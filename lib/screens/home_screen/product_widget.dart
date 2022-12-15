@@ -33,7 +33,7 @@ class HomeProduct extends StatelessWidget {
                   padding: EdgeInsets.all(
                     MediaQuery.of(context).size.width * 0.03,
                   ),
-                  child: Image.asset(productImage),
+                  child: Image.network(productImage),
                 ),
               ),
               Padding(

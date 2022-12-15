@@ -191,7 +191,7 @@ finally{
                             child: _imageUrlControler.text.isEmpty
                                 ? const Center(child: Text('Enter Image URL'))
                                 : Container(
-                                    child: Image.asset(_imageUrlControler.text),
+                                    child: Image.network(_imageUrlControler.text),
                                   ),
                           ),
                           Expanded(

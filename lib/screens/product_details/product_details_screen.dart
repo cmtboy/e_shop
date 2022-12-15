@@ -38,7 +38,7 @@ class ProductDetails extends StatelessWidget {
           child: Container(
               height: 300,
               width: 300,
-              child: Image.asset(productDetails.imgUrl)),
+              child: Image.network(productDetails.imgUrl)),
         ),
         Container(
           padding: const EdgeInsets.only(left: 20, top: 20),

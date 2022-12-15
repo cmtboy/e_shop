@@ -18,7 +18,7 @@ class ManageProductWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       leading: CircleAvatar(
-        backgroundImage: AssetImage(imageUrl),
+        backgroundImage: NetworkImage(imageUrl),
       ),
       title: Text(productName),
       trailing: Container(
