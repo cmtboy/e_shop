@@ -5,6 +5,10 @@ import 'package:provider/provider.dart';
 
 class ManageScreen extends StatelessWidget {
   const ManageScreen({Key? key}) : super(key: key);
+    Future<void> _productRefresh (BuildContext context)async{
+      await Provider.of<ProductProvider>(context,listen: false).fatchAndsetProducts();
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,16 +25,19 @@ class ManageScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8),
-        child: ListView.builder(
-          itemCount: productDetails.loadedProduct.length,
-          itemBuilder: (BuildContext context, int index) {
-            return ManageProductWidget(
-                id: productDetails.loadedProduct[index].id,
-                imageUrl: productDetails.loadedProduct[index].imgUrl,
-                productName: productDetails.loadedProduct[index].name);
-          },
+      body: RefreshIndicator(
+        onRefresh: () =>_productRefresh(context) ,
+        child: Padding(
+          padding: const EdgeInsets.all(8),
+          child: ListView.builder(
+            itemCount: productDetails.loadedProduct.length,
+            itemBuilder: (BuildContext context, int index) {
+              return ManageProductWidget(
+                  id: productDetails.loadedProduct[index].id,
+                  imageUrl: productDetails.loadedProduct[index].imgUrl,
+                  productName: productDetails.loadedProduct[index].name);
+            },
+          ),
         ),
       ),
     );

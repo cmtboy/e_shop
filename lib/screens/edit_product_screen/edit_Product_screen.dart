@@ -49,6 +49,10 @@ class _EditProductScreenState extends State<EditProductScreen> {
       return;
     }
     _form.currentState?.save();
+    // if (_editedProduct.id != null) {
+    //   await Provider.of<ProductProvider>(context, listen: false)
+    //       .updateProduct(_editedProduct.id, _editedProduct);
+    // } else{
     try {
       await Provider.of<ProductProvider>(context, listen: false)
           .addProduct(_editedProduct);
@@ -66,18 +70,18 @@ class _EditProductScreenState extends State<EditProductScreen> {
                       child: const Text("Ok"))
                 ],
               ));
+    // } 
     }
-finally{
-  // (_) {
+    // finally {
+    //   setState(() {
+    //     isloading = false;
+    //   });
+    //   Navigator.of(context).pop();
+    // }
       setState(() {
         isloading = false;
       });
       Navigator.of(context).pop();
-    // };
-}
-  
-
-    // Navigator.of(context).pop();
   }
 
   @override
@@ -191,7 +195,8 @@ finally{
                             child: _imageUrlControler.text.isEmpty
                                 ? const Center(child: Text('Enter Image URL'))
                                 : Container(
-                                    child: Image.network(_imageUrlControler.text),
+                                    child:
+                                        Image.network(_imageUrlControler.text),
                                   ),
                           ),
                           Expanded(

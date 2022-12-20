@@ -36,7 +36,10 @@ class _HomeScreenState extends State<HomeScreen> {
     _isInit = false;
     super.didChangeDependencies();
   }
+Future<void> _productRefresh (BuildContext context)async{
+      await Provider.of<ProductProvider>(context,listen: false).fatchAndsetProducts();
 
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,17 +56,23 @@ class _HomeScreenState extends State<HomeScreen> {
           )
         ],
       ),
-      body: GridView.builder(
-        itemCount: products.length,
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          childAspectRatio: 2 / 2.7,
-          crossAxisCount: 2,
+      body: _isLoading?const Center(child:CircularProgressIndicator()) :RefreshIndicator(
+        onRefresh: () => _productRefresh(context),
+        child: Padding(
+          padding: const EdgeInsets.all(0.0),
+          child: GridView.builder(
+            itemCount: products.length,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              childAspectRatio: 2 / 2.7,
+              crossAxisCount: 2,
+            ),
+            itemBuilder: (context, index) => HomeProduct(
+                id: products[index].id,
+                productImage: products[index].imgUrl,
+                productName: products[index].name,
+                productPrice: products[index].price),
+          ),
         ),
-        itemBuilder: (context, index) => HomeProduct(
-            id: products[index].id,
-            productImage: products[index].imgUrl,
-            productName: products[index].name,
-            productPrice: products[index].price),
       ),
       floatingActionButton: FloatingActionButton(
           onPressed: () {

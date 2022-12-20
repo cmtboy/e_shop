@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import '../models/product_model.dart';
 
 class ProductProvider with ChangeNotifier {
-   List<Product> loadedProduct = [
+  List<Product> loadedProduct = [
     // Product(
     //     id: '1',
     //     name: 'Walton Primo HM4 4GB RAM',
@@ -63,7 +63,7 @@ class ProductProvider with ChangeNotifier {
           imgUrl: prodData['imgUrl'],
         ));
       });
-      loadedProduct= loadedProducts;
+      loadedProduct = loadedProducts;
       notifyListeners();
       print(json.decode(response.body));
     } catch (error) {
@@ -103,8 +103,37 @@ class ProductProvider with ChangeNotifier {
     }
   }
 
+  Future<void> updateProduct(String id, Product newProduct) async {
+    final prodIndex = loadedProduct.indexWhere((prod) => prod.id == id);
+    if (prodIndex >= 0) {
+      var url = Uri.https(
+          'e-shop-74df1-default-rtdb.firebaseio.com', '/products/$id.json');
+      await http.patch(url,
+          body: json.encode({
+            'title': newProduct.id,
+            'description': newProduct.productDetails,
+            'imageUrl': newProduct.imgUrl,
+            'price': newProduct.price
+          }));
+      loadedProduct[prodIndex] = newProduct;
+      notifyListeners();
+    } else {
+      print('...');
+    }
+  }
+
   void deleteProduct(id) {
-    loadedProduct.removeWhere((element) => element.id == id);
+    var url = Uri.https(
+        'e-shop-74df1-default-rtdb.firebaseio.com', '/products/$id.json');
+    final existingProductIndex =
+        loadedProduct.indexWhere((element) => element.id == id);
+    Product? exitingProduct = loadedProduct[existingProductIndex];
+    loadedProduct.removeAt(existingProductIndex);
+    notifyListeners();
+    http.delete(url).then((_) {
+      exitingProduct = null;
+    });
+
     notifyListeners();
   }
 }
