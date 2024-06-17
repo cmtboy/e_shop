@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'screens/home_screen/HomeScreen.dart';
 import 'screens/cart_screen/CartScreen.dart';
-
+//eid mubarak
 void main() {
   runApp(const EShop());
 }
